@@ -52,7 +52,41 @@ int num_div(int a, int b){
     return 0;
 }
 
-
+//Auswahl der rechenart
 int main(){
+    int choice;
+    int a, b, c;
+
+    while(1){
+        printf("\nChoose an operation to perform:\n");
+        printf("1 - Add 3 numbers\n");
+        printf("2 - Subtract 3 numbers\n");
+        printf("3 - Multiply 2 numbers\n");
+        printf("4 - Divide 2 numbers\n");
+        printf("0 - Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                num_sum(a, b, c);
+                break;
+            case 2:
+                num_sub(a, b, c);
+                break;
+            case 3:
+                num_multip(a, b);
+                break;
+            case 4:
+                num_div(a, b);
+                break;
+            case 0:
+                printf("Exiting program.\n");
+                return 0;
+            default:
+                printf("Invalid choice. Please try again.\n");
+                break;
+        }
+    }
     return 0;
 }
