@@ -1,49 +1,48 @@
 #include <stdio.h>
 
 //Addiert 3 Zahlen
-int num_sum(int a, int b, int c){
+int num_sum(float a, float b, float c){
     
-    printf("\nPlease enter 3 integers for summation: \n");
-    scanf("%d %d %d", &a, &b, &c);
+    printf("\nPlease enter 3 numbers for summation: \n");
+    scanf("%.2f %.2f %.2f", &a, &b, &c);
 
-    int sum = a + b + c;
+    float sum = a + b + c;
 
     printf("-----------------------------------------------------");
-    printf("\n%d, %d and %d all together makes: %d\n", a, b, c, sum);
+    printf("\n%.2f, %.2f and %.2f all together makes: %.2f\n", a, b, c, sum);
     return 0;
 }
 
 //Subtrahiert 3 Zahlen
-int num_sub(int a, int b, int c){
+int num_sub(float a, float b, float c){
 
-    printf("\nPlease enter 3 integers for subtraction: \n");
-    scanf("%d %d %d", &a, &b, &c);
+    printf("\nPlease enter 3 numbers for subtraction: \n");
+    scanf("%.2f %.2f %.2f", &a, &b, &c);
 
-    int sub = a - b - c;
+    float sub = a - b - c;
 
     printf("-----------------------------------------------------");
-    printf("\n%d minus %d and %d makes: %d\n", a, b, c, sub);
+    printf("\n%.2f minus %.2f and %.2f makes: %.2f\n", a, b, c, sub);
     return 0;
 }
 
 //Multipliziert 2 Zahlen
-int num_multip(int a, int b){
+int num_multip(float a, float b){
 
-    printf("\nPlease enter 2 integers for multiplication: \n");
-    scanf("%d %d", &a, &b);
+    printf("\nPlease enter 2 numbers for multiplication: \n");
+    scanf("%f %f", &a, &b);
 
-    int multip = a * b;
+    float multip = a * b;
 
     printf("-----------------------------------------------------");
-    printf("\n%d and %d multiplied makes: %d\n", a, b, multip);
+    printf("\n%.2f and %.2f multiplied makes: %.2f\n", a, b, multip);
     return 0;
 }
 
 //Dividiert eine durch eine andere Zahl
-int num_div(){
-    float a, b;
+int num_div(float a,float b){
     
-    printf("\nPlease enter integer divident and devisor: \n");
+    printf("\nPlease enter numbers divident and devisor: \n");
     scanf("%f %f", &a, &b);
 
     if (b == 0) {
