@@ -8,6 +8,7 @@ int num_sum(int a, int b, int c){
 
     int sum = a + b + c;
 
+    printf("-----------------------------------------------------");
     printf("\n%d, %d and %d all together makes: %d\n", a, b, c, sum);
     return 0;
 }
@@ -20,6 +21,7 @@ int num_sub(int a, int b, int c){
 
     int sub = a - b - c;
 
+    printf("-----------------------------------------------------");
     printf("\n%d minus %d and %d makes: %d\n", a, b, c, sub);
     return 0;
 }
@@ -32,30 +34,33 @@ int num_multip(int a, int b){
 
     int multip = a * b;
 
+    printf("-----------------------------------------------------");
     printf("\n%d and %d multiplied makes: %d\n", a, b, multip);
     return 0;
 }
 
 //Dividiert eine durch eine andere Zahl
-int num_div(int a, int b){
+int num_div(){
+    float a, b;
+    
+    printf("\nPlease enter integer divident and devisor: \n");
+    scanf("%f %f", &a, &b);
 
-    if (b==0) {
-        printf("\nno division with zero allowed!");
+    if (b == 0) {
+        printf("\nError: Devision by zero is not allowed!");
     }
 
-    printf("\nPlease enter integer divident and devisor: \n");
-    scanf("%d %d", &a, &b);
+    float quotient = a / b;
 
-    int quotient = a / b;
-     
-    printf("\n%d devided by %d makes: %d\n", a, b, quotient);
+    printf("-----------------------------------------------------"); 
+    printf("\n%.2f devided by %.2f makes: %.2f\n", a, b, quotient);
     return 0;
 }
 
 //Auswahl der rechenart
 int main(){
     int choice;
-    int a, b, c;
+    float a, b, c;
 
     while(1){
         printf("\nChoose an operation to perform:\n");
