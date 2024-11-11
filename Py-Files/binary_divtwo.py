@@ -1,16 +1,19 @@
-def divtwo(orgnnum):
+def divtwo(orgn_num):
  count = 0
- while (orgnnum > 1):
-  orgnnum = (orgnnum - 2)
+ while (orgn_num > 1):
+  orgn_num = (orgn_num - 2)
   count = (count + 1)
  return count
 
-def binary(numtobin):
+def binary(num_to_bin):
  result = []
- while (numtobin > 0): #15
-  rhalf = divtwo(numtobin) #7
-  subvar = (rhalf + rhalf) #14
-  bindigit = (numtobin - subvar) #1
-  result.append(bindigit) #liste einschreiben [1, 1, 1, 1]
-  numtobin = (divtwo(subvar)) #7
+ while (num_to_bin > 0): #15
+  
+  r_half = divtwo(num_to_bin) #7
+  sub_var = (r_half + r_half) #14
+  bin_digit = (num_to_bin - sub_var) #1
+  num_to_bin = (divtwo(sub_var)) #7
+
+  result.append(bin_digit) #liste einschreiben [1, 1, 1, 1]
+
  return result

@@ -1,49 +1,62 @@
 #include <stdio.h>
 
-//Addiert 3 Zahlen
-int num_sum(float a, float b, float c){
-    
-    printf("\nPlease enter 3 numbers for summation: \n");
-    scanf("%.2f %.2f %.2f", &a, &b, &c);
+//Addiert 2 Zahlen
+int num_sum(){
+    float a, b;
 
-    float sum = a + b + c;
+    printf("\nPlease enter the first number for summation: \n");
+    scanf("%f", &a);
+    printf("\nPlease enter the second number for summation: \n");
+    scanf("%f", &b);
+    
+    float sum = a + b;
 
     printf("-----------------------------------------------------");
-    printf("\n%.2f, %.2f and %.2f all together makes: %.2f\n", a, b, c, sum);
+    printf("\n%.2f + %.2f equals: %.2f\n", a, b, sum);
     return 0;
 }
 
-//Subtrahiert 3 Zahlen
-int num_sub(float a, float b, float c){
+//Subtrahiert 2 Zahlen
+int num_sub(){
+    float a, b;
 
-    printf("\nPlease enter 3 numbers for subtraction: \n");
-    scanf("%.2f %.2f %.2f", &a, &b, &c);
+    printf("\nPlease enter the first number for subtraction: \n");
+    scanf("%f", &a);
+    printf("\nPlease enter the second number for subtraction: \n");
+    scanf("%f", &b);
 
-    float sub = a - b - c;
+
+    float sub = a - b;
 
     printf("-----------------------------------------------------");
-    printf("\n%.2f minus %.2f and %.2f makes: %.2f\n", a, b, c, sub);
+    printf("\n%.2f - %.2f equals: %.2f\n", a, b, sub);
     return 0;
 }
 
 //Multipliziert 2 Zahlen
-int num_multip(float a, float b){
+int num_multip(){
+    float a, b;
 
-    printf("\nPlease enter 2 numbers for multiplication: \n");
-    scanf("%f %f", &a, &b);
+    printf("\nPlease enter the first number for multiplication: \n");
+    scanf("%f", &a);
+    printf("\nPlease enter the second number for multiplication: \n");
+    scanf("%f", &b);
 
     float multip = a * b;
 
     printf("-----------------------------------------------------");
-    printf("\n%.2f and %.2f multiplied makes: %.2f\n", a, b, multip);
+    printf("\n%.2f multiplied with %.2f equals: %.2f\n", a, b, multip);
     return 0;
 }
 
 //Dividiert eine durch eine andere Zahl
-int num_div(float a,float b){
+int num_div(){
+    float a, b;
     
-    printf("\nPlease enter numbers divident and devisor: \n");
-    scanf("%f %f", &a, &b);
+    printf("\nPlease enter divident: \n");
+    scanf("%f", &a);
+    printf("\nPlease enter devisor: \n");
+    scanf("%f", &b);
 
     if (b == 0) {
         printf("\nError: Devision by zero is not allowed!");
@@ -52,19 +65,18 @@ int num_div(float a,float b){
     float quotient = a / b;
 
     printf("-----------------------------------------------------"); 
-    printf("\n%.2f devided by %.2f makes: %.2f\n", a, b, quotient);
+    printf("\n%.2f devided by %.2f equals: %.2f\n", a, b, quotient);
     return 0;
 }
 
-//Auswahl der rechenart
+//Auswahl der Rechenart
 int main(){
     int choice;
-    float a, b, c;
 
     while(1){
         printf("\nChoose an operation to perform:\n");
-        printf("1 - Add 3 numbers\n");
-        printf("2 - Subtract 3 numbers\n");
+        printf("1 - Add 2 numbers\n");
+        printf("2 - Subtract 2 numbers\n");
         printf("3 - Multiply 2 numbers\n");
         printf("4 - Divide 2 numbers\n");
         printf("0 - Exit\n");
@@ -73,16 +85,16 @@ int main(){
 
         switch (choice) {
             case 1:
-                num_sum(a, b, c);
+                num_sum();
                 break;
             case 2:
-                num_sub(a, b, c);
+                num_sub();
                 break;
             case 3:
-                num_multip(a, b);
+                num_multip();
                 break;
             case 4:
-                num_div(a, b);
+                num_div();
                 break;
             case 0:
                 printf("Exiting program.\n");
