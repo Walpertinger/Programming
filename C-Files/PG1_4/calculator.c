@@ -1,19 +1,27 @@
 #include <stdio.h>
-
+#define DEBUGGING
+ 
 //Addiert 2 Zahlen
 int num_sum(){
     float a, b;
-
+    #ifdef DEBUGGING
+    a = 5;
+    b = 6;
+    
+    #else
     printf("\nPlease enter the first number for summation: \n");
     scanf("%f", &a);
     printf("\nPlease enter the second number for summation: \n");
     scanf("%f", &b);
+    
+    #endif
     
     float sum = a + b;
 
     printf("-----------------------------------------------------");
     printf("\n%.2f + %.2f equals: %.2f\n", a, b, sum);
     return 0;
+    
 }
 
 //Subtrahiert 2 Zahlen
