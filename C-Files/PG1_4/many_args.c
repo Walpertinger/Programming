@@ -2,7 +2,7 @@
 #include <stdarg.h>
 
 // Funktion, die eine variable Anzahl von float-Argumenten subtrahiert
-float float_subtract(int count, ...) {
+float float_subtract() {
     va_list args;
     va_start(args, count);
 
