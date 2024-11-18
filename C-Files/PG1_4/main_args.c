@@ -2,8 +2,8 @@
 #include <stdarg.h>
 
 int test(int argc, char *argv[]){
-
-    for (int i=0; i<argc; i++){
+    int i;
+    for (int i = 0; i < argc; i++){
         printf("argv %d:%s", argc, argv[i]);
     }
 
@@ -14,5 +14,5 @@ int test(int argc, char *argv[]){
 }
 int main(){
     printf("\nnow: \n");
-    scanf("\n")
+    scanf("\n");
 }
