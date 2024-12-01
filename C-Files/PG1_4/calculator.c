@@ -4,17 +4,17 @@
 //Addiert 2 Zahlen
 int num_sum(){
     float a, b;
-    #ifdef DEBUGGING
+    //#ifdef DEBUGGING
     a = 5;
     b = 6;
     
-    #else
+    //#else
     printf("\nPlease enter the first number for summation: \n");
     scanf("%f", &a);
     printf("\nPlease enter the second number for summation: \n");
     scanf("%f", &b);
     
-    #endif
+    //#endif
     
     float sum = a + b;
 
@@ -89,6 +89,7 @@ int main(){
         printf("4 - Divide 2 numbers\n");
         printf("0 - Exit\n");
         printf("Enter your choice: ");
+        
         scanf("%d", &choice);
 
         switch (choice) {
