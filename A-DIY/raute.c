@@ -22,13 +22,21 @@ void zeile(int leer1, int leer2)
 int main()
 {
     int kantenlaenge = 0;
+    int sternabstand = 0;
     
     printf("Welche Kantenlaenge willst du verwenden?: ");
     scanf("%d", &kantenlaenge);
+    printf("\n");
 
-    for(kantenlaenge; kantenlaenge > 0; kantenlaenge--)
+    for(kantenlaenge; kantenlaenge > 0; kantenlaenge--, sternabstand+=2)
     {
-        zeile(kantenlaenge, kantenlaenge);
+        zeile(kantenlaenge, sternabstand);
+    }
+
+
+    for(sternabstand; 0 <= sternabstand; kantenlaenge++, sternabstand-=2)
+    {
+        zeile(kantenlaenge, sternabstand);
     }
 
     return 0;
