@@ -23,20 +23,28 @@ int main()
 {
     int kantenlaenge = 0;
     int sternabstand = 0;
+
+    int kantenlaengeA;
+    int i = 0;
     
     printf("Welche Kantenlaenge willst du verwenden?: ");
     scanf("%d", &kantenlaenge);
+
+    kantenlaengeA = kantenlaenge;
+    
     printf("\n");
 
-    for(kantenlaenge; kantenlaenge > 0; kantenlaenge--, sternabstand+=2)
+    for(i; i < kantenlaengeA; i++)
     {
-        zeile(kantenlaenge, sternabstand);
-    }
+        for(kantenlaenge; kantenlaenge > 0; kantenlaenge--, sternabstand+=2)
+        {
+            zeile(kantenlaenge, sternabstand);
+        }
 
-
-    for(sternabstand; 0 <= sternabstand; kantenlaenge++, sternabstand-=2)
-    {
-        zeile(kantenlaenge, sternabstand);
+        for(sternabstand; 0 <= sternabstand; kantenlaenge++, sternabstand-=2)
+        {
+            zeile(kantenlaenge, sternabstand);
+        }
     }
 
     return 0;
