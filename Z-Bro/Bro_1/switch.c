@@ -7,7 +7,8 @@ int main() {
     printf("\nEnter a letter grade: ");
     scanf("%c", &grade);
 
-    switch(grade){
+    switch(grade)
+    {
         case 'A':
             printf("perfect!\n");
             break;
