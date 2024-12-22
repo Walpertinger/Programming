@@ -6,7 +6,7 @@ int main()
     
     char x[20] = "waterbucket";
     char y[20] = "lemonade";
-    char temp[strlen(x) +1];
+    char temp[strlen(x)];
 
     strcpy(temp, x);
     strcpy(x, y);
