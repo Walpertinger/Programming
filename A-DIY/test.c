@@ -1,52 +1,60 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 
 int main() {
-    int **R;    // Zeiger auf ein 2D-Array
-    int pairs;  // Anzahl der Paare
+    int *A;
+    int elements;
+    int **R;
+    int pairs;
 
-    // Anzahl der Paare abfragen
-    printf("Geben Sie die Anzahl der Paare in der Relation R ein: ");
-    scanf("%d", &pairs);
+    // Eingabe der Anzahl der Elemente in A
+    printf("Enter the number of elements in A:\n");
+    scanf("%d", &elements);
+    getchar(); // Entfernt das '\n' nach scanf
 
-    // Speicher für das 2D-Array reservieren (für 'pairs' Zeilen)
-    R = (int **)malloc(pairs * sizeof(int *));
-    if (R == NULL) {
-        printf("Speicher konnte nicht reserviert werden.\n");
+    // Speicher für A reservieren
+    A = (int *)malloc(elements * sizeof(int));
+    if (A == NULL) {
+        printf("No empty space in storage!\n");
         return 1;
     }
 
-    // Speicher für jede Zeile reservieren (jeweils 2 Werte: x und y)
-    for (int i = 0; i < pairs; i++) {
-        R[i] = (int *)malloc(2 * sizeof(int));
-        if (R[i] == NULL) {
-            printf("Speicher konnte nicht reserviert werden.\n");
+    // Eingabe der Elemente in A
+    char buffer[1024];
+    printf("Enter the elements of A separated by spaces (e.g., 1 2 3 4):\n");
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+        buffer[strcspn(buffer, "\n")] = '\0'; // Entferne das abschließende '\n'
+
+        // Zerlege die Eingabe anhand von Leerzeichen
+        char *token = strtok(buffer, " ");
+        int i = 0;
+        while (token != NULL && i < elements) {
+            A[i] = atoi(token); // Konvertiere das Token zu Integer und speichere es in A
+            token = strtok(NULL, " ");
+            i++;
+        }
+
+        // Falls zu wenige Werte eingegeben wurden
+        if (i < elements) {
+            printf("Error: Not enough elements provided. Expected %d, but got %d.\n", elements, i);
+            free(A); // Speicher freigeben
             return 1;
         }
     }
 
-    // Paare einlesen
-    printf("Geben Sie die Paare der Relation R ein (z.B. x y):\n");
-    for (int i = 0; i < pairs; i++) {
-        printf("Paar %d: ", i + 1);
-        scanf("%d %d", &R[i][0], &R[i][1]);  // x -> R[i][0], y -> R[i][1]
-    }
-
-    // Ausgabe der Paare
-    printf("Die Relation R ist:\n{ ");
-    for (int i = 0; i < pairs; i++) {
-        printf("(%d, %d)", R[i][0], R[i][1]);
-        if (i < pairs - 1) {
+    // Testausgabe der Elemente von A
+    printf("A:={");
+    for (int i = 0; i < elements; i++) {
+        printf("%d", A[i]);
+        if (i < elements - 1) {
             printf(", ");
         }
     }
-    printf(" }\n");
+    printf("}\n");
 
     // Speicher freigeben
-    for (int i = 0; i < pairs; i++) {
-        free(R[i]);
-    }
-    free(R);
+    free(A);
 
     return 0;
 }

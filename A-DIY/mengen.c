@@ -2,40 +2,50 @@
 #include <string.h>
 #include <stdlib.h>
 
-typedef struct {
-    int x;
-    int y;
-} Pair;
+    //Test für Relation Unterscheidung in zugehörigen Gruppen   
+    //Benötigt sind die Menge A und die Menge der Relation selbst
 
 int main()
 {
-    //Test für Relation Unterscheidung in zugehörigen Gruppen
-    //Benötigt sind die Menge A und die Menge der Relation selbst
-
     int *A;
     int elements;
-
     int **R;
     int pairs;
 
     //Vorerst muss durch angabe der Elemente A bestimmt werden 
     printf("Enter the number of elements in A:\n");
     scanf("%d", &elements);
+    getchar();
 
     A = (int *)malloc(elements * sizeof(int));
-
     if (A == NULL)
     {
         printf("no empty space in storage!\n");
         return 1;
     }
 
-    //Eingabe der Elemente eins nach dem anderen
-    printf("Enter the elements of A one at a time: \n");
-    for (int i = 0; i < elements; i++)
+    char buffer[1024];
+    printf("Enter the elements of A separated by space (e.g., 1 2 3 4):\n");
+    
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL)
     {
-        printf("Element %d: ", i + 1);
-        scanf("%d", &A[i]);
+        buffer[strcspn(buffer, "\n")] = '\0'; // Entferne das abschließende '\n'
+
+        // Zerlege die Eingabe in Tokens
+        char *token = strtok(buffer, " ");
+        int i = 0;
+        while (token != NULL && i < elements)
+        {
+            A[i] = atoi(token);
+            token = strtok(NULL, " ");
+            i++;
+        }
+        if (i < elements) {
+        printf("Error: Not enough elements provided. Expected %d, but got %d.\n", elements, i);
+        free(A); // Speicher freigeben
+        return 1;
+    }
+
     }
 
     //Test der Elemente in A
