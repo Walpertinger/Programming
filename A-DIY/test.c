@@ -2,45 +2,51 @@
 #include <stdlib.h>
 
 int main() {
-    int *A = NULL;  // Dynamisches Array für A
-    int n = 0;      // Anzahl der Elemente in A
-    int capacity = 10; // Anfangskapazität des Arrays (wenn der Benutzer viele Elemente eingibt)
-    
-    A = (int *)malloc(capacity * sizeof(int)); // Speicher für das Array reservieren
-    
-    if (A == NULL) {
-        printf("Speicherreservierung fehlgeschlagen!\n");
-        return 1;  // Fehlercode 1 für Speicherfehler
+    int **R;    // Zeiger auf ein 2D-Array
+    int pairs;  // Anzahl der Paare
+
+    // Anzahl der Paare abfragen
+    printf("Geben Sie die Anzahl der Paare in der Relation R ein: ");
+    scanf("%d", &pairs);
+
+    // Speicher für das 2D-Array reservieren (für 'pairs' Zeilen)
+    R = (int **)malloc(pairs * sizeof(int *));
+    if (R == NULL) {
+        printf("Speicher konnte nicht reserviert werden.\n");
+        return 1;
     }
 
-    printf("Gib die Elemente der Menge A ein, getrennt durch Leerzeichen (beende die Eingabe mit Enter):\n");
-
-    // Benutzereingabe lesen, bis ein Zeilenumbruch erreicht wird
-    while (scanf("%d", &A[n]) == 1) {
-        n++;
-        
-        // Wenn die Kapazität des Arrays erreicht ist, vergrößern wir es dynamisch
-        if (n == capacity) {
-            capacity *= 2; // Kapazität verdoppeln
-            A = (int *)realloc(A, capacity * sizeof(int)); // Neuen Speicherplatz anfordern
-
-            if (A == NULL) {
-                printf("Speicherreservierung fehlgeschlagen!\n");
-                return 1;  // Fehlercode 1 für Speicherfehler
-            }
+    // Speicher für jede Zeile reservieren (jeweils 2 Werte: x und y)
+    for (int i = 0; i < pairs; i++) {
+        R[i] = (int *)malloc(2 * sizeof(int));
+        if (R[i] == NULL) {
+            printf("Speicher konnte nicht reserviert werden.\n");
+            return 1;
         }
     }
 
-    // Ausgabe der Elemente von A
-    printf("Die Menge A enthält die Elemente:\n{ ");
-    for (int i = 0; i < n; i++) {
-        printf("%d ", A[i]);
+    // Paare einlesen
+    printf("Geben Sie die Paare der Relation R ein (z.B. x y):\n");
+    for (int i = 0; i < pairs; i++) {
+        printf("Paar %d: ", i + 1);
+        scanf("%d %d", &R[i][0], &R[i][1]);  // x -> R[i][0], y -> R[i][1]
     }
-    printf("}\n");
+
+    // Ausgabe der Paare
+    printf("Die Relation R ist:\n{ ");
+    for (int i = 0; i < pairs; i++) {
+        printf("(%d, %d)", R[i][0], R[i][1]);
+        if (i < pairs - 1) {
+            printf(", ");
+        }
+    }
+    printf(" }\n");
 
     // Speicher freigeben
-    free(A);
+    for (int i = 0; i < pairs; i++) {
+        free(R[i]);
+    }
+    free(R);
 
     return 0;
 }
-
