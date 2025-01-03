@@ -1,60 +1,65 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
 
-int main() {
+int main()
+{
     int *A;
-    int elements;
-    int **R;
-    int pairs;
+    int elements = 0; // Number of detected elements
+    char buffer[1024]; // Buffer to store the input line
 
-    // Eingabe der Anzahl der Elemente in A
-    printf("Enter the number of elements in A:\n");
-    scanf("%d", &elements);
-    getchar(); // Entfernt das '\n' nach scanf
+    // Ask the user to input the integers
+    printf("Enter the elements of A separated by spaces (e.g., 1 2 3 4 5):\n");
+    if (fgets(buffer, sizeof(buffer), stdin) != NULL)
+    {
+        buffer[strcspn(buffer, "\n")] = '\0'; // Remove the trailing newline character
 
-    // Speicher für A reservieren
-    A = (int *)malloc(elements * sizeof(int));
-    if (A == NULL) {
-        printf("No empty space in storage!\n");
-        return 1;
-    }
-
-    // Eingabe der Elemente in A
-    char buffer[1024];
-    printf("Enter the elements of A separated by spaces (e.g., 1 2 3 4):\n");
-    if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
-        buffer[strcspn(buffer, "\n")] = '\0'; // Entferne das abschließende '\n'
-
-        // Zerlege die Eingabe anhand von Leerzeichen
+        // First pass: Count the number of integers in the input
         char *token = strtok(buffer, " ");
-        int i = 0;
-        while (token != NULL && i < elements) {
-            A[i] = atoi(token); // Konvertiere das Token zu Integer und speichere es in A
+        while (token != NULL)
+        {
+            elements++; // Count the number of tokens
             token = strtok(NULL, " ");
-            i++;
         }
 
-        // Falls zu wenige Werte eingegeben wurden
-        if (i < elements) {
-            printf("Error: Not enough elements provided. Expected %d, but got %d.\n", elements, i);
-            free(A); // Speicher freigeben
+        // Allocate memory for A based on the number of elements
+        A = (int *)malloc(elements * sizeof(int));
+        if (A == NULL)
+        {
+            printf("No empty space in storage!\n");
             return 1;
         }
-    }
 
-    // Testausgabe der Elemente von A
-    printf("A:={");
-    for (int i = 0; i < elements; i++) {
-        printf("%d", A[i]);
-        if (i < elements - 1) {
-            printf(", ");
+        // Second pass: Parse and store the integers into A
+        strcpy(buffer, strtok(buffer, "\0")); // Restore the original input
+        token = strtok(buffer, " ");
+        int i = 0;
+        while (token != NULL)
+        {
+            A[i++] = atoi(token);
+            token = strtok(NULL, " ");
         }
-    }
-    printf("}\n");
 
-    // Speicher freigeben
-    free(A);
+        // Test the elements in A
+        printf("A:={");
+        for (int i = 0; i < elements; i++)
+        {
+            printf("%d", A[i]);
+            if (i < elements - 1)
+            {
+                printf(", ");
+            }
+        }
+        printf("}\n");
+
+        // Free the allocated memory
+        free(A);
+    }
+    else
+    {
+        printf("Error reading input.\n");
+    }
 
     return 0;
 }
+//this does not really work

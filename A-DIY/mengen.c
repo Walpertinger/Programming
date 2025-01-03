@@ -4,26 +4,9 @@
 
     //Test für Relation Unterscheidung in zugehörigen Gruppen   
     //Benötigt sind die Menge A und die Menge der Relation selbst
-
-int main()
+/*
+int A_fgets()
 {
-    int *A;
-    int elements;
-    int **R;
-    int pairs;
-
-    //Vorerst muss durch angabe der Elemente A bestimmt werden 
-    printf("Enter the number of elements in A:\n");
-    scanf("%d", &elements);
-    getchar();
-
-    A = (int *)malloc(elements * sizeof(int));
-    if (A == NULL)
-    {
-        printf("no empty space in storage!\n");
-        return 1;
-    }
-
     char buffer[1024];
     printf("Enter the elements of A separated by space (e.g., 1 2 3 4):\n");
     
@@ -45,8 +28,32 @@ int main()
         free(A); // Speicher freigeben
         return 1;
     }
+}
+*/
 
+int main()
+{
+    int *A;
+    int elements;
+    int **R;
+    int pairs;
+ 
+    printf("Enter the number of elements in A:\n");
+    scanf("%d", &elements);
+    getchar();
+
+    A = (int *)malloc(elements * sizeof(int));
+    if (A == NULL)
+    {
+        printf("no empty space in storage!\n");
+        return 1;
     }
+
+    printf("Enter the elements of A (e.g., 1 2 3 4):\n");
+        for (int i = 0; i < elements; i++)
+        {
+            scanf("%d", &A[i]);
+        }
 
     //Test der Elemente in A
     printf("A:={");
@@ -82,14 +89,14 @@ int main()
         }
     }
 
-    printf("give the pairs of relation (i.e. x y):\n");
+    printf("give the pairs of relation with only spaces in between! (i.e. x y):\n");
     for (int i = 0; i < pairs; i++)
     {
-        printf("Pair %d: ", i + 1);
+        printf("Pair(s): ");
         scanf("%d %d", &R[i][0], &R[i][1]);
     }
 
-    printf("Die Relation R ist:\n{ ");
+    printf("\nDie Relation R ist:\n{ ");
     for (int i = 0; i < pairs; i++)
     {
         printf("(%d, %d)", R[i][0], R[i][1]);
