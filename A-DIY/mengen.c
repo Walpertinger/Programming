@@ -31,13 +31,21 @@ int A_fgets()
 }
 */
 
+int reflexive()
+{
+
+}
+
 int main()
 {
+    //deklaration
     int *A;
     int elements;
     int **R;
     int pairs;
  
+
+    //enter elements of A
     printf("Enter the number of elements in A:\n");
     scanf("%d", &elements);
     getchar();
@@ -55,24 +63,12 @@ int main()
             scanf("%d", &A[i]);
         }
 
-    //Test der Elemente in A
-    printf("A:={");
-    for (int i = 0; i < elements; i++)
-    {
-        printf("%d", A[i]);
-        if (i < elements - 1)
-        {
-            printf(", ");
-        }
-    }
-    printf("}\n");
 
-    //Vorerst muss die Anzahl der Paare gegeben werden
+    //enter paired elements of xRy
     printf("give the number of pairs in relation: \n");
     scanf("%d", &pairs);
 
-    R = (int **)malloc(pairs * sizeof(int *));
-    
+    R = (int **)malloc(pairs * sizeof(int *));    
     if (R == NULL)
     {
         printf("no empty space in storage!\n");
@@ -96,7 +92,20 @@ int main()
         scanf("%d %d", &R[i][0], &R[i][1]);
     }
 
-    printf("\nDie Relation R ist:\n{ ");
+
+    //test to give out A and R
+    printf("the set A is:\n{");
+    for (int i = 0; i < elements; i++)
+    {
+        printf("%d", A[i]);
+        if (i < elements - 1)
+        {
+            printf(", ");
+        }
+    }
+    printf("}\n");
+
+    printf("\nthe relation R is:\n{");
     for (int i = 0; i < pairs; i++)
     {
         printf("(%d, %d)", R[i][0], R[i][1]);
@@ -105,13 +114,15 @@ int main()
             printf(", ");
         }
     }
-    printf(" }\n");
+    printf("}\n");
 
-    for (int i = 0; i < pairs; i++)
+
+
+    //A and R set free to fight memory leak
+    for (int i = 0; i < pairs; i++) //R[i] needs to be set free too
     {
         free(R[i]);
     }
-    
     free(R);
     free(A);
 
