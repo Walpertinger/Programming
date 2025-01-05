@@ -31,9 +31,12 @@ int A_fgets()
 }
 */
 
-int reflexive()
+int reflexive(int *A, int elements, int **R, int pairs)
 {
+    printf("elements: %d", elements);
+    printf("pairs: %d", pairs);
 
+    return 0;
 }
 
 int main()
@@ -48,7 +51,6 @@ int main()
     //enter elements of A
     printf("Enter the number of elements in A:\n");
     scanf("%d", &elements);
-    getchar();
 
     A = (int *)malloc(elements * sizeof(int));
     if (A == NULL)
@@ -88,13 +90,21 @@ int main()
     printf("give the pairs of relation with only spaces in between! (i.e. x y):\n");
     for (int i = 0; i < pairs; i++)
     {
-        printf("Pair(s): ");
         scanf("%d %d", &R[i][0], &R[i][1]);
     }
 
 
+
+    if (reflexive(A, elements, R, pairs)) 
+        {
+            printf("it is reflexive\n");
+        } else {
+            printf("its not reflexive\n");
+        }
+
+
     //test to give out A and R
-    printf("the set A is:\n{");
+    printf("\n\nthe set A is:\n{");
     for (int i = 0; i < elements; i++)
     {
         printf("%d", A[i]);
