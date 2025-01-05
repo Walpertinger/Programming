@@ -118,7 +118,7 @@ int main()
 
 
 
-    //A and R set free to fight memory leak
+    //A and R set free for no memory leak
     for (int i = 0; i < pairs; i++) //R[i] needs to be set free too
     {
         free(R[i]);
