@@ -33,11 +33,27 @@ int A_fgets()
 
 int reflexive(int *A, int elements, int **R, int pairs)
 {
-    printf("elements: %d", elements);
-    printf("pairs: %d", pairs);
+    for (int i = 0; i < elements; i++) {
+        int isReflexive = 0;
 
-    return 0;
+        for (int j = 0; j < pairs; j++) {
+            if (R[j][0] == A[i] && R[j][1] == A[i]) {
+                isReflexive = 1;
+                break;
+            }
+        }
+        if (!isReflexive) {
+            return 0; //relation is not reflexive
+        }
+    }
+    return 1; //relation is reflexive
 }
+
+int symmetrical(int *A, int elements, int **R, int pairs)
+{
+
+}
+
 
 int main()
 {
@@ -94,14 +110,20 @@ int main()
     }
 
 
-
+    
     if (reflexive(A, elements, R, pairs)) 
         {
-            printf("it is reflexive\n");
+            printf("\nit is reflexive\n");
         } else {
-            printf("its not reflexive\n");
+            printf("\nit is not reflexive\n");
         }
 
+    if(symmetrical(A, elements, R, pairs))
+        {
+            printf("\nit is symmetrical\n");
+        } else {
+            printf("\nit is not symmetrical\n");
+        }
 
     //test to give out A and R
     printf("\n\nthe set A is:\n{");
