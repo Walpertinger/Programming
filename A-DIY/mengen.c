@@ -51,7 +51,7 @@ int reflexive(int *A, int elements, int **R, int pairs)
 
 int symmetrical(int *A, int elements, int **R, int pairs)
 {
-
+    for(int i = 0; i )
 }
 
 
