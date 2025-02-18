@@ -3,9 +3,9 @@
 
 #import requests
 
-DISCORD_TOKEN = "MTMzOTY0MjQ5OTU3NjM2NTE2Ng.GB7_ja.32KfbH2_hZ4AQZcxZoV2osz6C3UtigwzWARm5w"
+DISCORD_TOKEN = ""
 
-TELEGRAM_TOKEN = "7808353665:AAEzr2YJiHHuLci7eC7LnfOamF3Bx1l5xpM"
+TELEGRAM_TOKEN = ""
 CHAT_ID = "1046776084"
 
 # Intents aktivieren
@@ -30,7 +30,7 @@ async def on_voice_state_update(member, before, after):
 
 # Funktion, um eine Nachricht an Telegram zu senden
 def send_telegram_message(message):
-    url = f"https://api.telegram.org/bot{7808353665:AAEzr2YJiHHuLci7eC7LnfOamF3Bx1l5xpM}/sendMessage"
+    url = f"https://api.telegram.org/bot{ttoken}/sendMessage"
     params = {"chat_id": CHAT_ID, "text": message}
     response = requests.get(url, params=params)
     print(response.json())  # Zeigt die Antwort von Telegram
