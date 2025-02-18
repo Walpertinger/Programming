@@ -1,7 +1,7 @@
-#import discord
-#from discord.ext import commands
+import discord
+from discord.ext import commands
 
-#import requests
+import requests
 
 DISCORD_TOKEN = ""
 
@@ -30,7 +30,7 @@ async def on_voice_state_update(member, before, after):
 
 # Funktion, um eine Nachricht an Telegram zu senden
 def send_telegram_message(message):
-    url = f"https://api.telegram.org/bot{ttoken}/sendMessage"
+    url = f"https://api.telegram.org/bot{t_token}/sendMessage"
     params = {"chat_id": CHAT_ID, "text": message}
     response = requests.get(url, params=params)
     print(response.json())  # Zeigt die Antwort von Telegram
