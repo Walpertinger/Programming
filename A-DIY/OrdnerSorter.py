@@ -2,14 +2,15 @@ import os
 import shutil
 from PIL import Image  # Pillow-Bibliothek für Bildbearbeitung
 
-creator = "Rolyat"
-titelcore = "Bikini Babyblue Hair Pink Beach"
+creator = "Rolyat" + " "
+titelcore = "Bikini White Black Hair Green Beach"
+root_path = r"C:\Users\Julian\Dropbox\Ero\A-Rolyatistaylor\A-Casual\(Casual) Bikini White Black Hair Green Beach"
+
 titel = creator + titelcore
-root_path = r"C:\Users\Julian\Dropbox\Ero\A-Rolyatistaylor\A-Casual\(Casual) Bikini Babyblue Hair Pink Beach"
 
 # Neuer Ordner erstellen
 ordnername = os.path.basename(root_path)
-neuer_ordnername = f"() {ordnername}"
+neuer_ordnername = f"{ordnername}"
 neuer_ordnerpfad = os.path.join(root_path, neuer_ordnername)
 os.makedirs(neuer_ordnerpfad, exist_ok=True)
 print(f"Neuen Ordner erstellt: {neuer_ordnerpfad}")
