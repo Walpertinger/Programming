@@ -2,9 +2,9 @@ import os
 import shutil
 from PIL import Image  # Pillow-Bibliothek für Bildbearbeitung
 
-creator = "Rolyat" + " "
-titelcore = "Bikini White Black Hair Green Beach"
-root_path = r"C:\Users\Julian\Dropbox\Ero\A-Rolyatistaylor\A-Casual\(Casual) Bikini White Black Hair Green Beach"
+creator = "Kaddi" + " "
+titelcore = "Ahri Coven Outfit"
+root_path = r"C:\Users\Julian\Desktop\Everything\Wallpaper Cosplay\LQ\Kaddi\X-Sets\(League of Legends) Ahri Coven\New folder"
 
 titel = creator + titelcore
 
