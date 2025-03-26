@@ -2,9 +2,9 @@ import os
 import shutil
 from PIL import Image  # Pillow-Bibliothek für Bildbearbeitung
 
-creator = "Kaddi" + " "
-titelcore = "Ahri Coven Outfit"
-root_path = r"C:\Users\Julian\Desktop\Everything\Wallpaper Cosplay\LQ\Kaddi\X-Sets\(League of Legends) Ahri Coven\New folder"
+creator = "Name" + " "
+titelcore = "Set Title "
+root_path = r"C:\Users\Path\To\Folder"
 
 titel = creator + titelcore
 
